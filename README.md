@@ -20,17 +20,17 @@ How it works?
 - Let's say  that our "MyClass" has two dependecies: ISingletonDependency and ITransientDependency
   
   //Define the ISingletonDependency
-  function ISingletonDependecy(){}
-  ISingletonDependecy.Name="ISingletonDependecy";
+  function ISingletonDependency(){}
+  ISingletonDependency.Name="ISingletonDependency";
   
   //Define the ITransientDependency
   function ITransientDependency(){}
   ITransientDependency.Name="ITransientDependency";
   
   //Implementation for ISingletonDependency
-  function SingletonDependecy(){}
-  SingletonDependecy.Name="SingletonDependecy";
-  SingletonDependecy.prototype=new ISingletonDependecy();
+  function SingletonDependency(){}
+  SingletonDependency.Name="SingletonDependency";
+  SingletonDependency.prototype=new ISingletonDependency();
   
   //Implementation for ITransientDependency
   function TransientDependency(){}
@@ -38,7 +38,7 @@ How it works?
   TransientDependency.prototype=new ITransientDependency();
   
   //now let's  tell our MyClass that will have two new dependencies:
-  MyClass.Dependencies=new Array("ISingletonDependecy", "ITransientDependency");
+  MyClass.Dependencies=new Array("ISingletonDependency", "ITransientDependency");
   
   
 - Now we've got our Objects defined. All objects have their own interface. Let's register them:
@@ -47,9 +47,9 @@ How it works?
   var injectus=Injectus.GetInstance();
   
   //We create a component for an interface and assign an implementation and a life time
-  injectus.Register(Component.For(ISingletonDependency).ImplementedBy(SingletonDependency).WithLifestyle(LifeStyleType.Singleton));
-  injectus.Register(Component.For(ITransientDependency).ImplementedBy(TransientDependency).WithLifestyle(LifeStyleType.Transient));
-  injectus.Register(Component.For(IInterface).ImplementedBy(MyClass).WithLifestyle(LifeStyleType.Transient));
+  injectus.Register(Component.From(ISingletonDependency).ImplementedBy(SingletonDependency).WithLifestyle(LifeStyleType.Singleton));
+  injectus.Register(Component.From(ITransientDependency).ImplementedBy(TransientDependency).WithLifestyle(LifeStyleType.Transient));
+  injectus.Register(Component.From(IInterface).ImplementedBy(MyClass).WithLifestyle(LifeStyleType.Transient));
   
 
 - Once registered we are ready to use our objects!!
