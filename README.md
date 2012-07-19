@@ -7,13 +7,13 @@ How it works?
 
 - Fist you should define your clases and interfaces. Remember that in javascript interfaces are simulated.
 
-  *Define the interface*
-  **function IInterface(){}**
+  *Define the interface*  
+  **function IInterface(){}**  
   **IInterface.Name="IInterface";**
   
-  *Define the class and "extend" the interface*
-  **function MyClass(){}**
-  **MyClass.Name="MyClass";**
+  *Define the class and "extend" the interface*  
+  **function MyClass(){}**  
+  **MyClass.Name="MyClass";**  
   **MyClass.prototype=new IInterface();** *<-- Here we "extend"*
   
   
