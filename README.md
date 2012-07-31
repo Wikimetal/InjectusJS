@@ -56,5 +56,8 @@ How it works?
   
   *In order to resolve we'll just need to call Resolve method with the desired "interface"*  
   **var myClass=Injectus.GetInstance().Resolve(IInterface);**  
-   
+  
+- By performing a call to *Injectus.GetInstance().GetMetrics().PrintLog()* it will print into the debugging console of the browser (if exists) a list of registered components and how many times they've been resolved.
+  
 - For more details. Please have a look to the InjectusJSTest inside /test/lib. There you'll have a nice Jasmine test which will help you to understand how it works
+
