@@ -5,7 +5,7 @@ Dependency Injection Library for JS
 
 How it works?
 
-- Fist you should define your clases and interfaces. Remember that in javascript interfaces are simulated.
+- Fist you should define your classes and interfaces. Remember that in javascript interfaces are simulated.
 
   *Define the interface*  
   **function IInterface(){}**  
