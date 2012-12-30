@@ -9,11 +9,9 @@ How it works?
 
   *Define the interface*  
   **function IInterface(){}**  
-  **IInterface.Name="IInterface";**
   
   *Define the class and "extend" the interface*  
   **function MyClass(){}**  
-  **MyClass.Name="MyClass";**  
   **MyClass.prototype=new IInterface();** *<-- Here we "extend"*
   
   
@@ -21,20 +19,16 @@ How it works?
   
   *Define the ISingletonDependency*  
   **function ISingletonDependency(){}**  
-  **ISingletonDependency.Name="ISingletonDependency";**  
     
   *Define the ITransientDependency*  
   **function ITransientDependency(){}**  
-  **ITransientDependency.Name="ITransientDependency";**  
     
   *Implementation for ISingletonDependency*  
   **function SingletonDependency(){}**  
-  **SingletonDependency.Name="SingletonDependency";**  
   **SingletonDependency.prototype=new ISingletonDependency();**  
     
   *Implementation for ITransientDependency*  
   **function TransientDependency(){}**  
-  **TransientDependency.Name="TransientDependency";**  
   **TransientDependency.prototype=new ITransientDependency();**  
     
   *now let's  tell our MyClass that will have two new dependencies:*  
@@ -43,21 +37,18 @@ How it works?
     
 - Now we've got our Objects defined. All objects have their own interface. Let's register them:
 
-  *Let's keep Injectus as a singleton*  
-  **var injectus=Injectus.GetInstance();**  
-    
   *We create a component for an interface and assign an implementation and a life time*  
-  **injectus.Register(Component.From(ISingletonDependency).ImplementedBy(SingletonDependency).WithLifestyle(LifeStyleType.Singleton));**  
-  **injectus.Register(Component.From(ITransientDependency).ImplementedBy(TransientDependency).WithLifestyle(LifeStyleType.Transient));**  
-  **injectus.Register(Component.From(IInterface).ImplementedBy(MyClass).WithLifestyle(LifeStyleType.Transient));**
+  **Injectus.Register(Component.From(ISingletonDependency).ImplementedBy(SingletonDependency).WithLifestyle(LifeStyleType.Singleton));**  
+  **Injectus.Register(Component.From(ITransientDependency).ImplementedBy(TransientDependency).WithLifestyle(LifeStyleType.Transient));**  
+  **Injectus.Register(Component.From(IInterface).ImplementedBy(MyClass).WithLifestyle(LifeStyleType.Transient));**
   
 
 - Once registered we are ready to use our objects!!
   
   *In order to resolve we'll just need to call Resolve method with the desired "interface"*  
-  **var myClass=Injectus.GetInstance().Resolve(IInterface);**  
+  **var myClass=Injectus.Resolve(IInterface);**  
   
-- By performing a call to *Injectus.GetInstance().GetMetrics().PrintLog()* it will print into the debugging console of the browser (if exists) a list of registered components and how many times they've been resolved.
+- By performing a call to *Injectus.GetMetrics().PrintLog()* it will print into the debugging console of the browser (if exists) a list of registered components and how many times they've been resolved.
   
 - For more details. Please have a look to the InjectusJSTest inside /test/lib. There you'll have a nice Jasmine test which will help you to understand how it works
 
