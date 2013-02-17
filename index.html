@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Injectus JS : Dependency Injection Library for JS" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Injectus JS</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Wikimetal/InjectusJS">View on GitHub</a>
+
+          <h1 id="project_title">Injectus JS</h1>
+          <h2 id="project_tagline">Dependency Injection Library for JS</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Wikimetal/InjectusJS/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Wikimetal/InjectusJS/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>InjectusJS</h1>
+
+<p>Dependency Injection Library for JS</p>
+
+<p>How it works?</p>
+
+<ul>
+<li>
+<p>Fist you should define your classes and interfaces. Remember that in javascript interfaces are simulated.</p>
+
+<p><em>Define the interface</em><br><strong>function IInterface(){}</strong>  </p>
+
+<p><em>Define the class and "extend" the interface</em><br><strong>function MyClass(){}</strong><br><strong>MyClass.prototype=new IInterface();</strong> <em>&lt;-- Here we "extend"</em></p>
+</li>
+<li>
+<p>Let's say  that our "MyClass" has two dependecies: ISingletonDependency and ITransientDependency</p>
+
+<p><em>Define the ISingletonDependency</em><br><strong>function ISingletonDependency(){}</strong>  </p>
+
+<p><em>Define the ITransientDependency</em><br><strong>function ITransientDependency(){}</strong>  </p>
+
+<p><em>Implementation for ISingletonDependency</em><br><strong>function SingletonDependency(){}</strong><br><strong>SingletonDependency.prototype=new ISingletonDependency();</strong>  </p>
+
+<p><em>Implementation for ITransientDependency</em><br><strong>function TransientDependency(){}</strong><br><strong>TransientDependency.prototype=new ITransientDependency();</strong>  </p>
+
+<p><em>now let's  tell our MyClass that will have two new dependencies:</em><br><strong>MyClass.Dependencies=new Array("ISingletonDependency", "ITransientDependency");</strong></p>
+</li>
+<li>
+<p>Now we've got our Objects defined. All objects have their own interface. Let's register them:</p>
+
+<p><em>We create a component for an interface and assign an implementation and a life time</em><br><strong>Injectus.Register(Component.From(ISingletonDependency).ImplementedBy(SingletonDependency).WithLifestyle(LifeStyleType.Singleton));</strong><br><strong>Injectus.Register(Component.From(ITransientDependency).ImplementedBy(TransientDependency).WithLifestyle(LifeStyleType.Transient));</strong><br><strong>Injectus.Register(Component.From(IInterface).ImplementedBy(MyClass).WithLifestyle(LifeStyleType.Transient));</strong></p>
+</li>
+<li>
+<p>Once registered we are ready to use our objects!!</p>
+
+<p><em>In order to resolve we'll just need to call Resolve method with the desired "interface"</em><br><strong>var myClass=Injectus.Resolve(IInterface);</strong>  </p>
+</li>
+<li><p>By performing a call to <em>Injectus.GetMetrics().PrintLog()</em> it will print into the debugging console of the browser (if exists) a list of registered components and how many times they've been resolved.</p></li>
+<li><p>For more details. Please have a look to the InjectusJSTest inside /test/lib. There you'll have a nice Jasmine test which will help you to understand how it works</p></li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Injectus JS maintained by <a href="https://github.com/Wikimetal">Wikimetal</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
