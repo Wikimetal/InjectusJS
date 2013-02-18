@@ -54,11 +54,16 @@ a:focus {
 /*******************************************************************************
 Theme Styles
 *******************************************************************************/
+@font-face
+{
+font-family: injectus;
+src: url('../font/geek.ttf')
+}
 
 body {
   box-sizing: border-box;
   color:#373737;
-  background: #212121;
+  background: #EEEEEE;
   font-size: 16px;
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -277,21 +282,6 @@ Full-Width Styles
   margin: 0 auto;
 }
 
-#forkme_banner {
-  display: block;
-  position: absolute;
-  top:0;
-  right: 10px;
-  z-index: 10;
-  padding: 10px 50px 10px 10px;
-  color: #fff;
-  background: url('../images/blacktocat.png') #0090ff no-repeat 95% 50%;
-  font-weight: 700;
-  box-shadow: 0 0 10px rgba(0,0,0,.5);
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-}
-
 #header_wrap {
   background: #212121;
   background: -moz-linear-gradient(top, #373737, #212121);
@@ -301,69 +291,80 @@ Full-Width Styles
   background: linear-gradient(top, #373737, #212121);
 }
 
-#header_wrap .inner {
-  padding: 50px 10px 30px 10px;
-}
-
 #project_title {
   margin: 0;
+  font-family:injectus;
   color: #fff;
-  font-size: 42px;
-  font-weight: 700;
+  font-weight: normal;
+  font-size: 72px;
   text-shadow: #111 0px 0px 10px;
+  text-align:center;
 }
 
 #project_tagline {
   color: #fff;
-  font-size: 24px;
-  font-weight: 300;
+  font-size: 22px;
+  font-weight: normal;
   background: none;
   text-shadow: #111 0px 0px 10px;
+  text-align:center;
 }
 
 #downloads {
   position: absolute;
-  width: 210px;
+  width: 270px;
   z-index: 10;
-  bottom: -40px;
-  right: 0;
   height: 70px;
-  background: url('../images/icon_download.png') no-repeat 0% 90%;
+  right:100px;
 }
 
 .zip_download_link {
   display: block;
   float: right;
-  width: 90px;
-  height:70px;
+  width: 80px;
+  height:80px;
   text-indent: -5000px;
   overflow: hidden;
-  background: url(../images/sprite_download.png) no-repeat bottom left;
+  background: url(../images/zip.png) no-repeat 0px 0px;
+  margin-top:10px;
 }
 
 .tar_download_link {
   display: block;
   float: right;
-  width: 90px;
-  height:70px;
+  width: 80px;
+  height:80px;
   text-indent: -5000px;
   overflow: hidden;
-  background: url(../images/sprite_download.png) no-repeat bottom right;
-  margin-left: 10px;
+  background: url(../images/tar.png) no-repeat 0px 0px;
+  margin-right: 10px;
+  margin-top:10px;
 }
 
 .zip_download_link:hover {
-  background: url(../images/sprite_download.png) no-repeat top left;
+  background: url(../images/zip.png) no-repeat 0px -80px;
 }
 
 .tar_download_link:hover {
-  background: url(../images/sprite_download.png) no-repeat top right;
+  background: url(../images/tar.png) no-repeat 0px -80px;
 }
-
+.github_link{
+  display: block;
+  float: right;
+  width: 80px;
+  height:80px;
+  text-indent: -5000px;
+  overflow: hidden;
+  background: url(../images/github.png) no-repeat 0px 0px;
+  margin-right: 10px;
+  margin-top:10px;
+}
+.github_link:hover{
+  background: url(../images/github.png) no-repeat 0px -80px;
+}
 #main_content_wrap {
-  background: #f2f2f2;
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
+  z-index:200;
+  position:absolute;
 }
 
 #main_content {
@@ -384,7 +385,10 @@ Small Device Styles
   body {
     font-size:14px;
   }
-
+  
+  .bgimg  {
+    display: none;
+  }
   #downloads {
     display: none;
   }
@@ -428,4 +432,14 @@ Small Device Styles
     font-size: 11px;
   }
 
+}
+
+.bgimg{
+  background-image: url('../images/injectusjs.png');
+  background-repeat: no-repeat;
+  background-position: top-left;
+  height:592px;
+  width:413px;
+  position:absolute;
+  z-index:100;
 }
