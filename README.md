@@ -48,6 +48,10 @@ How it works?
   *In order to resolve we'll just need to call Resolve method with the desired "interface"*  
   **var myClass=Injectus.Resolve(IInterface);**  
   
+- We can also define our max dependencies limit. By default is set to 5 dependencies. But of course, you can increase the limit by calling:
+  **Injectus.SetMaxDependenciesNumber(newMaxLimit)**
+  *It will only update the limit if is higher than current in order to preserver compatibility with previously registered components*
+  
 - By performing a call to *Injectus.GetMetrics().PrintLog()* it will print into the debugging console of the browser (if exists) a list of registered components and how many times they've been resolved.
   
 - For more details. Please have a look to the InjectusJSTest inside /test/lib. There you'll have a nice Jasmine test which will help you to understand how it works

@@ -41,6 +41,25 @@ describe("InjectusJS", function () {
             expect(Injectus.instance).toEqual(Injectus.getInstance());
         });
     });
+    
+    describe("static SetMaxDependenciesNumber: ", function () {
+        it("should update dependency max number when is higher than actual", function () {
+            var currentMaxNumberOfDependencies=5;
+            var newMaxNumberOfDependencies=6;
+            Injectus.MaxAllowedDependecies = currentMaxNumberOfDependencies;
+            Injectus.SetMaxDependenciesNumber(newMaxNumberOfDependencies);
+            expect(Injectus.MaxAllowedDependecies).toEqual(newMaxNumberOfDependencies);
+            Injectus.MaxAllowedDependecies = currentMaxNumberOfDependencies;
+        });
+        it("shouldn't update dependency max number when is lower than actual", function () {
+            var currentMaxNumberOfDependencies=5;
+            var newMaxNumberOfDependencies=3;
+            Injectus.MaxAllowedDependecies = currentMaxNumberOfDependencies;
+            Injectus.SetMaxDependenciesNumber(newMaxNumberOfDependencies);
+            expect(Injectus.MaxAllowedDependecies).toEqual(currentMaxNumberOfDependencies);
+            Injectus.MaxAllowedDependecies = currentMaxNumberOfDependencies;
+        });
+    });
 
     describe("static Register: ", function () {
         it("should throw an exception when the component is already registered", function () {
