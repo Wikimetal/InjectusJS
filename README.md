@@ -48,7 +48,7 @@ How it works?
   *In order to resolve we'll just need to call Resolve method with the desired "interface"*  
   **var myClass=Injectus.Resolve(IInterface);**  
   
-- We can also define our max dependencies limit. By default is set to 5 dependencies. But of course, you can increase the limit by calling:  
+- We can also define our max dependencies limit. By default is set to 5 dependencies but you can increase it by calling:  
 
   **Injectus.SetMaxDependenciesNumber(newMaxLimit)**  
   *It will only update the limit if is higher than current in order to preserver compatibility with previously registered components*
