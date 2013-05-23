@@ -36,7 +36,7 @@
 
 <p><em>Define the interface</em><br><strong>function IInterface(){}</strong>  </p>
 
-<p><em>Define the class and "extend" the interface</em><br><strong>function MyClass(){}</strong><br><strong>MyClass.prototype=new IInterface();</strong> <em>&lt;-- Here we "extend"</em></p>
+<p><em>Define the class and "extend" the interface</em><br><strong>function MyClass(){}</strong><br><strong>MyClass.prototype=new IInterface();</strong> <em>&lt;-- Here we "implement"</em></p>
 </li>
 <li>
 <p>Let's say  that our "MyClass" has two dependecies: ISingletonDependency and ITransientDependency</p>
@@ -60,6 +60,12 @@
 <p>Once registered we are ready to use our objects!!</p>
 
 <p><em>In order to resolve we'll just need to call Resolve method with the desired "interface"</em><br><strong>var myClass=Injectus.Resolve(IInterface);</strong>  </p>
+</li>
+<li>
+<p>We can also define our max dependencies limit. By default is set to 5 dependencies but you can increase it by calling:<p>
+
+<p><strong>Injectus.SetMaxDependenciesNumber(newMaxLimit)</strong></p>
+<p><em>It will only update the limit if is higher than current in order to preserver compatibility with previously registered components</em></p>
 </li>
 <li><p>By performing a call to <em>Injectus.GetMetrics().PrintLog()</em> it will print into the debugging console of the browser (if exists) a list of registered components and how many times they've been resolved.</p></li>
 <li><p>For more details. Please have a look to the InjectusJSTest inside /test/lib. There you'll have a nice Jasmine test which will help you to understand how it works</p></li>
