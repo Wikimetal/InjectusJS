@@ -10,7 +10,7 @@ How it works?
   *Define the interface*  
   **function IInterface(){}**  
   
-  *Define the class and "extend" the interface*  
+  *Define the class and "implement" the interface*  
   **function MyClass(){}**  
   **MyClass.prototype=new IInterface();** *<-- Here we "implement"*
   
