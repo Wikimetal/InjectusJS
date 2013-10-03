@@ -12,7 +12,7 @@ How it works?
   
   *Define the class and "implement" the interface*  
   **function MyClass(){}**  
-  **MyClass.prototype=new IInterface();** *<-- Here we "implement"*
+  **MyClass.prototype=Object.create(IInterface.prototype);** *<-- Here we "implement"*
   
   
 - Let's say  that our "MyClass" has two dependecies: ISingletonDependency and ITransientDependency
