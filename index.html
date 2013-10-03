@@ -36,7 +36,7 @@
 
 <p><em>Define the interface</em><br><strong>function IInterface(){}</strong>  </p>
 
-<p><em>Define the class and "implement" the interface</em><br><strong>function MyClass(){}</strong><br><strong>MyClass.prototype=new IInterface();</strong> <em>&lt;-- Here we "implement"</em></p>
+<p><em>Define the class and "implement" the interface</em><br><strong>function MyClass(){}</strong><br><strong>MyClass.prototype=Object.Create(IInterface.prototype);</strong> <em>&lt;-- Here we "implement"</em></p>
 </li>
 <li>
 <p>Let's say  that our "MyClass" has two dependecies: ISingletonDependency and ITransientDependency</p>
