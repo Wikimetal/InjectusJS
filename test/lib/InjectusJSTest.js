@@ -66,12 +66,12 @@ describe("InjectusJS", function () {
             var component = Component.From(IInterfaceName).ImplementedBy(ClassName).WithLifestyle(LifeStyleType.Transient);
             Injectus.Register(component);
             expect(function () { Injectus.Register(component); })
-            .toThrow("Component " + IInterfaceName.Name() + " already registered");
+            .toThrow("Component " + InjectusName(IInterfaceName) + " already registered");
         });
         it("should add the component to register to the private components array", function () {
             var component = Component.From(IInterfaceName).ImplementedBy(ClassName).WithLifestyle(LifeStyleType.Transient);
             Injectus.Register(component);
-            expect(Injectus.getInstance().Components[IInterfaceName.Name()]).toEqual(component);
+            expect(Injectus.getInstance().Components[InjectusName(IInterfaceName)]).toEqual(component);
         });
         it("should throw an error when component has more than " + Injectus.MaxAllowedDependecies + " dependencies", function () {
             function IMaxDependencies() { };
@@ -80,7 +80,7 @@ describe("InjectusJS", function () {
             MaxDependencies.Dependencies = new Array("ISingletonDependency", "ITransientDependency", "ISingletonDependency", "ITransientDependency", "ISingletonDependency", "ITransientDependency");
             var component = Component.From(IMaxDependencies).ImplementedBy(MaxDependencies).WithLifestyle(LifeStyleType.Transient);
             expect(function () { Injectus.Register(component); })
-            .toThrow("Injectus: Object " + component.Implementation.Name() + " has too much dependencies");
+            .toThrow("Injectus: Object " + InjectusName(component.Implementation) + " has too much dependencies");
         });
     });
     describe("static Resolve:", function () {
@@ -133,14 +133,14 @@ describe("InjectusJS", function () {
             Injectus.Resolve(ITransientDependency); //Resolves ITransientDependency
             Injectus.Resolve(ITransientDependency); //Resolves ITransientDependency
             expect(Injectus.GetMetrics().TotalResolved).toEqual(2);
-            expect(Injectus.GetMetrics().Resolved[ITransientDependency.Name()].Total).toEqual(2);
+            expect(Injectus.GetMetrics().Resolved[InjectusName(ITransientDependency)].Total).toEqual(2);
         });
         it("should return statistics of singleton resolved components toEqual 1", function () {
             SetUpComponents();
             Injectus.Resolve(ISingletonDependency); //Resolves ISingletonDependency
             Injectus.Resolve(ISingletonDependency); //Already reolved dependency will not appear in metrics
             expect(Injectus.GetMetrics().TotalResolved).toEqual(1);
-            expect(Injectus.GetMetrics().Resolved[ISingletonDependency.Name()].Total).toEqual(1);
+            expect(Injectus.GetMetrics().Resolved[InjectusName(ISingletonDependency)].Total).toEqual(1);
         });
         it("should return statistics of component with resolved dependencies", function () {
             SetUpComponents();
@@ -148,9 +148,9 @@ describe("InjectusJS", function () {
             Injectus.Resolve(IInterfaceName); //Resolves IInterfaceName, ITransientDependency
             Injectus.Resolve(IInterfaceName); //Resolves IInterfaceName, ITransientDependency
             expect(Injectus.GetMetrics().TotalResolved).toEqual(7);
-            expect(Injectus.GetMetrics().Resolved[IInterfaceName.Name()].Total).toEqual(3);
-            expect(Injectus.GetMetrics().Resolved[ISingletonDependency.Name()].Total).toEqual(1);
-            expect(Injectus.GetMetrics().Resolved[ITransientDependency.Name()].Total).toEqual(3);
+            expect(Injectus.GetMetrics().Resolved[InjectusName(IInterfaceName)].Total).toEqual(3);
+            expect(Injectus.GetMetrics().Resolved[InjectusName(ISingletonDependency)].Total).toEqual(1);
+            expect(Injectus.GetMetrics().Resolved[InjectusName(ITransientDependency)].Total).toEqual(3);
         });
     });
 });
