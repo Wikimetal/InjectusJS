@@ -3,7 +3,7 @@ InjectusJS
 
 Dependency Injection Library for JS
 
-How it works?
+How does it works?
 
 - Fist you should define your classes and interfaces. Remember that in javascript interfaces are simulated.
 
