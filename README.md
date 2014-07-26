@@ -3,7 +3,7 @@ InjectusJS
 
 Dependency Injection Library for JS
 
-How it works?
+How does it works?
 
 - Fist you should define your classes and interfaces. Remember that in javascript interfaces are simulated.
 
@@ -47,6 +47,8 @@ How it works?
   
   *In order to resolve we'll just need to call Resolve method with the desired "interface"*  
   **var myClass=Injectus.Resolve(IInterface);**  
+
+- There's a working example in /test/src and /test/spec
   
 - We can also define our max dependencies limit. By default is set to 5 dependencies but you can increase it by calling:  
 
